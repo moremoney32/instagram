@@ -1,100 +1,100 @@
-*,*::after,*,*::before{
-    box-sizing: border-box;
+*,
+*::after,
+*,
+*::before {
+     box-sizing: border-box;
 }
-*{
-    margin:0;
-    padding: 0;
+* {
+     margin: 0;
+     padding: 0;
 }
 
-.parent-formulaires{
-    width: 350px;
-    margin: auto;
-    padding-top: 20px;
-    padding-bottom: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.parent-formulaires {
+     width: 350px;
+     margin: auto;
+     padding-top: 20px;
+     padding-bottom: 40px;
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
 }
-#connect-formulaires{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    padding-left: 25px;
-    padding-right: 25px;
-    padding-top: 35px;
-    padding-bottom: 20px;
-    gap: 20px;
-    border: 1px solid #dbdbdb;
-    text-align: center;
+#connect-formulaires {
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+     padding-left: 25px;
+     padding-right: 25px;
+     padding-top: 35px;
+     padding-bottom: 20px;
+     gap: 20px;
+     border: 1px solid #dbdbdb;
+     text-align: center;
 }
-#connect-formulaires img{
-    padding-bottom: 10px;
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    width: 200px;
-    height: 70px;
-    object-fit: cover;
-    font-size: 10px;
-    margin: auto;
+#connect-formulaires img {
+     padding-bottom: 10px;
+     font-family: "Helvetica Neue", Arial, sans-serif;
+     width: 200px;
+     height: 70px;
+     object-fit: cover;
+     font-size: 10px;
+     margin: auto;
 }
-.parent-paragraphe{
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    margin: auto;
-    color: #737373;
-    font-size: 23px;
-    font-weight: 500;
+.parent-paragraphe {
+     display: flex;
+     flex-direction: column;
+     gap: 2px;
+     margin: auto;
+     color: #737373;
+     font-size: 23px;
+     font-weight: 500;
 }
-.parent-facebooks{
-    display: flex;
-    margin: auto;
-    cursor: pointer;
-    background:#0095f6;
-    color: #fff;
-    padding: 5px;
-    padding-right: 20px;
-    border-radius: 10px;
-    width: 95%;
+.parent-facebooks {
+     display: flex;
+     margin: auto;
+     cursor: pointer;
+     background: #0095f6;
+     color: #fff;
+     padding: 5px;
+     padding-right: 20px;
+     border-radius: 10px;
+     width: 95%;
 }
-.parent-facebooks .facebooks{
-    width: 25px !important;
-    height: 30px !important;
-    object-fit: cover;
-    transform: translate3d(0,5px,0);
-
+.parent-facebooks .facebooks {
+     width: 25px !important;
+     height: 30px !important;
+     object-fit: cover;
+     transform: translate3d(0, 5px, 0);
 }
-.parent-facebooks :nth-child(2){
-    font-size: 17px;
-    transform: translate3d(0,5px,0);
+.parent-facebooks :nth-child(2) {
+     font-size: 17px;
+     transform: translate3d(0, 5px, 0);
 }
-.parent-strong{
-    margin: auto;
-    font-size: 17px;
+.parent-strong {
+     margin: auto;
+     font-size: 17px;
 }
-.no-strong{
-    color: #737373; 
+.no-strong {
+     color: #737373;
 }
-.strong{
-    color: #265481;
+.strong {
+     color: #265481;
 }
-.icons-miscrosofts{
-    display: flex;
-    gap:10px ;
-    width: 100%;
-   padding-top:20px;
-   padding-left: 50px;
+.icons-miscrosofts {
+     display: flex;
+     gap: 10px;
+     width: 100%;
+     padding-top: 20px;
+     padding-left: 50px;
 }
-.googles{
-    width: 40%;
-    object-fit: cover;
-    height: 40px;
-    border-radius: 10px;
-
+.googles {
+     width: 40%;
+     object-fit: cover;
+     height: 40px;
+     border-radius: 10px;
 }
-.miscrosofts{
-    width: 40%;
-    object-fit: cover;
-    height: 40px;
-    border-radius: 10px;
-
+.miscrosofts {
+     width: 40%;
+     object-fit: cover;
+     height: 40px;
+     border-radius: 10px;
 }

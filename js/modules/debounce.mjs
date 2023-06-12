@@ -1,14 +1,10 @@
-export function debounce (nextSlider){
-    return new Promise((resolve)=>{
-        let slideInterval
-    
-       slideInterval = setInterval(()=>{
-        clearInterval(slideInterval); 
-            return resolve(nextSlider())
+export function debounce(nextSlider) {
+     return new Promise((resolve) => {
+          let slideInterval;
 
-        },2000)
-
-    })
-    
-
+          slideInterval = setInterval(() => {
+               clearInterval(slideInterval);
+               return resolve(nextSlider());
+          }, 2000);
+     });
 }
