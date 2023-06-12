@@ -1,6 +1,4 @@
-/**function qui sert de connexion sur son compte instagram */
-
-export function connect(userData){
+export function sign(userData){
 
     return new Promise((resolve)=>{
      

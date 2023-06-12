@@ -1,15 +1,15 @@
 
 
-    //const indexedDB = window.indexedDB || mozindexedDB || window.webkitindexedDB
-                      //|| shim.indexedDB
 
     export function openBaseDonne(objectStoreName){
 
-      return new Promise((resolve,reject)=>{
-        const baseDonne = window.indexedDB.open("connexion", 1);
+      return new Promise((resolve)=>{
+        const indexedDB = window.indexedDB || mozindexedDB || window.webkitindexedDB
+                      || shim.indexedDB
+        const baseDonne = indexedDB.open("connexion", 1);
         let db;
-        baseDonne.onerror = function(event) {
-          reject(event.target.error);
+        baseDonne.onerror = function() {
+          resolve("erreur de connexon de la base de donnee");
         };
     
         baseDonne.onsuccess = function(event) {
@@ -23,7 +23,7 @@
 
             let emailPassword =
              db.createObjectStore(objectStoreName,{keyPath: "id"})
-             emailPassword.createIndex("emailIndex", "email", { unique: true });
+             emailPassword.createIndex("emailIndex", "email", { unique: true });//unicite de l email
       }
           
         };
@@ -33,7 +33,7 @@
 
 
 
-//ajout des elements dans la base de donne
+// verification de l email dans la base de donnee 
 
 
 export function verifyEmail(bd, objectStoreName, email) {
@@ -45,22 +45,28 @@ export function verifyEmail(bd, objectStoreName, email) {
     const requestEmail = emailIndex.get(email);
     requestEmail.onsuccess = function (event) {
       const result = event.target.result;
-     
       return resolve(result)
-      
+     
     };
+   
   });
 }
 
-export function addData(bd, objectStoreName, data) {
+//ajout des elements dans la base de donne
+
+export function addUserData(bd, objectStoreName, data) {
   return new Promise((resolve) => {
     let enterContactDb = bd.transaction([objectStoreName], "readwrite");
     let emailPasswordStore = enterContactDb.objectStore(objectStoreName);
 
     let addEmailPassword = emailPasswordStore.add(data);
 
-    addEmailPassword.onsuccess = function (event) {
-      resolve("Donnée ajoutée avec succès !");
+    addEmailPassword.onsuccess = function () {
+     return resolve("Inscription reussie");
     };
+    addEmailPassword.onerror = function () {
+      return resolve(" cet email est deja utilise veuillez changer");
+     };
+
   });
 }
