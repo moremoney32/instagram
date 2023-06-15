@@ -21,12 +21,13 @@ document.addEventListener("DOMContentLoaded", () => {
           Id++;
 
           signUp(userData).then((result) => {
-               snackbar(document.querySelector("#body"), "../../assets/icons/info.svg", result, 3000);
-               result.id = Id;
+               snackbar(document.querySelector("#body"), "../../assets/icons/info.svg", result.message, 3000);
+               
 
-               if (typeof result !== "string") {
-                    return openBaseDonne("connexion").then((response) => {
-                         addUserData(response, "connexion", result).then(
+               if (result.data) {
+                    result.data.id = Id;
+                    return openBaseDonne("connexion","objectCode").then((response) => {
+                         addUserData(response, "connexion", result.data).then(
                               (message) => {
                                    return alert(message);
                               }

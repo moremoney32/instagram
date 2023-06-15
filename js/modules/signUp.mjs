@@ -13,20 +13,20 @@ export function signUp(userData) {
           );
 
           if (isEmptyField) {
-               return resolve("Veuillez remplir tous les champs");
+               return resolve({message:"Veuillez remplir tous les champs"});
           }
           if (!verifyEmail) {
                return resolve(
-                    "veuillez entrer une email valide contenant un @gmail.com ou @yahoo.fr"
-               );
+                    {message:"veuillez entrer une email valide contenant un @gmail.com ou @yahoo.fr"
+          });
           }
           if (!verifyPassword) {
                return resolve(
-                    "veuillez entrer 8 caracteres minimun, une majuscule,une minuscule,un caractere spécial"
-               );
+                    {message:"veuillez entrer 8 caracteres minimun, une majuscule,une minuscule,un caractere spécial"
+          });
           }
           if (!isEmptyField && verifyEmail && verifyPassword) {
-               return resolve(userData);
+               return resolve({data:userData});
           }
      });
 }

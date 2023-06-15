@@ -10,9 +10,9 @@
 
      domNodeToInject.insertAdjacentHTML("beforeend", constructSnackbar);
 
-     const actionSnackbar = document.getElementById("actionSnackbar");
+     const actionSnackbar = document.querySelector("#actionSnackbar");
 
-     const snackbar = document.getElementById("snackbar");
+     const snackbar = document.querySelector("#snackbar");
 
      requestAnimationFrame(() => {
        snackbar.style.transform = "scale3d(1,1,1)";
