@@ -1,54 +1,51 @@
-import { changesConnexionInput } from "../modules/changesConnexionInput.mjs"
-import { codeAleatoireWithPassword } from "../modules/codeAleatoireWithPassword.mjs"
-//import { fetchData } from "../modules/fetchData.mjs"
-import { addUserDataCode, openBaseDonne, verifyEmail } from "../modules/indexDB.js"
-import { sendEmail } from "../modules/sendEmail.js"
-//import { sendEmail } from "../modules/sendEmail.js"
+
+import { changesConnexionInput } from "../helpers/changesConnexionInput.mjs";
+import { codeAleatoireWithPassword } from "../helpers/codeAleatoireWithPassword.mjs";
+import { addUserDataCode, openBaseDonne, verifyEmail } from "../helpers/indexDB.js";
 
 
-document.addEventListener("DOMContentLoaded",()=>{
+document.addEventListener("DOMContentLoaded", () => {
+    
     changesConnexionInput()
-    let ID = ""
+    let ID = "";
   
-    const url = "https://api.emailjs.com/api/v1.0/email/send";
-    document.querySelector('#form').addEventListener("click",(e)=>{
-        let email = document.querySelector("#email").value
-        console.log(email)
-
-        e.preventDefault()
-        ID++;
-        openBaseDonne("objectCode").then((response)=>{
-              verifyEmail(response,"connexion",email).then((message)=>{
-                  alert(message),document.querySelector("#email").value = ""
-                })
-                codeAleatoireWithPassword(6).then((result)=>{
-                    let objectResult = {
-                        code:result,
-                        id:ID
-                    }
-                    let data = {
-                        
-                          email:email,
-                          subject: 'Hello',
-                          message:result,
-                       
-                      }
-                     addUserDataCode(response,"objectCode",objectResult).then((message)=>{
-                        return console.log(message)
-                    }) 
-                      //fetchData(url,data).then((result)=>{
-                       // return result, console.log(result)
-                      //})
-                      sendEmail(data)
-                             
-                     
-            }) 
-            
-            
-        
-         
-
-       })
-
-    })
-})
+    window.onunload = function() {
+      document.querySelector("#email").value = "";
+    };
+  
+    document.querySelector('#form').addEventListener("click", (e) => {
+      let email = document.querySelector("#email").value;
+      console.log(email);
+  
+      e.preventDefault();
+      ID++;
+  
+      openBaseDonne("connexion", "objectCode").then((response) => {
+            verifyEmail(response, "connexion", email).then((message) => {
+          console.log(message);
+          if (message.message1) {
+           return codeAleatoireWithPassword(6).then((result) => {
+              let objectResult = {
+                code: result,
+                id: ID
+              };
+              let objectEmail = {
+                email: email,
+                id: ID
+              };
+  
+            return  addUserDataCode(response, "objectCode", objectResult).then((messages) => {
+                console.log(messages);
+                localStorage.setItem("userInscription", JSON.stringify(objectEmail));
+               return alert(message.message1),
+  
+                window.location.href = "confirmationCodePassword.html";
+              });
+            });
+          } else {
+            alert(message.message2);
+          }
+        });
+      });
+    });
+  });

@@ -1,8 +1,8 @@
-//import { connect } from "../modules/connect.mjs"
+
 import { connect } from "../modules/connect.mjs";
 import { changeSlider } from "../modules/changeSlider.mjs";
-import { openBaseDonne,verifyEmailPassword } from "../modules/indexDB.js"
 import { snackbar } from "../widgets/snackBar.mjs";
+import { openBaseDonne, verifyEmailPassword } from "../helpers/indexDB.js";
 
 document.addEventListener("DOMContentLoaded", () => {
      changeSlider();
@@ -16,11 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                password: document.querySelector("#password").value,
           };
-          console.log(userData);
           connect(userData).then((result) => {
-              // console.log(result.message);
-               //console.log(result.data.email)
-
+             
                snackbar(document.querySelector("#bodyConnection"), "../../assets/icons/info.svg", result.message, 3000);
               
                if(result.data){
