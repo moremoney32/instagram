@@ -13,7 +13,8 @@ document.addEventListener("DOMContentLoaded",()=>{
 
             openBaseDonne("connexion","objectCode").then((response)=>{
 
-          return    updateInfoUserPassword(response,"connexion",email)
+          return    updateInfoUserPassword(response,"connexion",email),
+          window.location.href = "menu.html";
             
         })
     })

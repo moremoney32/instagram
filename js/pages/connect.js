@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
                if(result.data){
                     return openBaseDonne("connexion","objectCode").then((response)=>{
                          return  verifyEmailPassword(response,"connexion",result.data.email,result.data.password).then((message)=>{
-                            return   alert(message)
+                            return   alert(message), window.location.href = "menu.html";
                          })
                       
           

@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded",()=>{
                 }
                 return alert(message.message2)
             })
-            return updateInfoUser(response,"connexion")
+            return updateInfoUser(response,"connexion"), window.location.href = "menu.html";
         })
     })
 })
