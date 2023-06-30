@@ -519,6 +519,123 @@ transform: translate3d(0,-10px,0);
 .sous-section2-1-input{
     position: relative;
 }
+.posts-donnees{
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-top: 50px;
+    background: red;
+}
+.sous-posts-donnees{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 15px;
+    position: relative;
+}
+.post-infos{
+    display: flex;
+    justify-content: space-between;
+}
+.post-infos-img{
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+.post-infos-img:hover{
+    background: darkgray;
+    border-radius: 10px;
+    transition:  1s ease-in-out;
+}
+.post-infos-img img{
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.sous-post-infos-img{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.sous-post-infos-img-name{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.sous-post-infos-img-name span{
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+}
+.sous-post-infos-img-name img{
+   width: 20px;
+   height: 20px;
+}
+.Visibilite{
+    font-size: 15px;
+}
+.close{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    padding: 10px;
+    transform: translate3d(10px,10px,0);
+}
+.close:hover{
+    background: darkgray;
+    border-radius: 50%;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    transition:  1s ease-in-out;
+   
+}
+.post-input{
+    background: green;
+}
+.post-input input{
+    width: 100%;
+    border: none;
+    outline: none;
+    padding-bottom: 200px;
+}
+.post-input ::placeholder{
+    font-size: 18px;
+    
+}
+.post-emoticone{
+    cursor: pointer;
+}
+#textarea{
+    position: absolute;
+    left: -150px;
+    top:400px;
+    padding: 10px;
+    border-radius: 10px;
+    background: black;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 500px;
+}
+.emogis-click{
+    padding: 10px;
+    width: 20px;
+    height: 20px;
+}
+.emogis-click:hover{
+    background: darkgrey;
+    transition: 1s ease-in-out;
+    border-radius: 50%;
+
+}
 .sous-section2-1-input :nth-child(1){
     width: 90%;
     border-radius: 5px;
