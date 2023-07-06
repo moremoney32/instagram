@@ -4,21 +4,22 @@ import { displayEmogis } from "./displayEmogis.js";
 
 export function emogis(emojiArray){
     
-        
         displayEmogis(emojiArray)
-        
+        textarea.style.display = "block"
+
         let emojis = document.querySelectorAll(".emojis-capture")
-        console.log(emojis)
         let inputEmogis;
 
         emojis.forEach((emoji)=>{
             
-            emoji.addEventListener("click",(e)=>{
-                console.log(e.target.innerText)
+            emoji.addEventListener("click",(e)=>{ 
+                let input = document.querySelector("#post-input-input")
                 inputEmogis = e.target.innerText
-                return document.querySelector("#post-input-input").innerHTML = inputEmogis
+                let inputValue = input.value 
+                let newInput =  inputValue +  inputEmogis
+                return input.value = newInput,textarea.style.display  ="none"
             })
         })
+
     
-      
 }

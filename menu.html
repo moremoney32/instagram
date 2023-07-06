@@ -5,16 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/menu.css">
     <title>Menu Instagram</title>
-     <!-- UIkit CSS -->
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.9.4/dist/css/uikit.min.css" />
-
-     <!-- UIkit JS -->
-     <script src="https://cdn.jsdelivr.net/npm/uikit@3.9.4/dist/js/uikit.min.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/uikit@3.9.4/dist/js/uikit-icons.min.js"></script>
-    
 </head>
 <body>
     <div id="bloc-page">
+        <div class="masque"></div>
         <div id="parent-bloc">
             <header>
                 <div class="header-left">
@@ -182,7 +176,7 @@
                 <div class="section2">
                     <div class="sous-section2-1">
                         <div class="sous-section2-1-input">
-                            <input type="text" placeholder="What s new"/>
+                            <input type="text" placeholder="What s new" id="sous-section2-1-input-input"/>
                             <img src="./assets/images/franck.png" alt=""> 
                             
                                 <img src="./assets/icons/letter.svg" alt="" class=" letter">
@@ -191,7 +185,7 @@
                                 <img src="./assets/icons/television.svg" alt="" class=" television">   
                         </div>
                         <div class="sous-section2-1-2">
-                            <div class="sous-section2-1-2-child1">
+                            <!--<div class="sous-section2-1-2-child1">
                                 <div class="sous-section2-1-2-child1-header-title">
                                     <img src="./assets/images/jugalux.jpg" alt="">
                                     <div class="sous-section2-1-2-child1-header-title-span">
@@ -244,7 +238,7 @@
                                 <img src="./assets/icons/letter.svg" alt="" class=" letter-icons">
                                 <img src="./assets/icons/cinema.svg" alt="" class=" cinema-icons">
                                 <img src="./assets/icons/music.svg" alt="" class=" music-icons">
-                            </div>
+                            </div>-->
                             <div class="sous-section2-1-2-child1">
                                 <div class="sous-section2-1-2-child1-header-title">
                                     <img src="./assets/images/arianeee.jpg" alt="">
@@ -295,9 +289,40 @@
                                         <span class="emogis-click">🙂</span> 
                                         <span name="" id="textarea" ></span> 
                                     </div>
-                                    <div></div>
+                                    <div class="all-video-pictures">
+                                        <div class="sous-all-video-pictures img-pictures">
+                                            <span class="sous-all-video-pictures-span ">Ajouter une photo</span>
+                                            <input type="file" id="update-picture-input" style="display: none;">
+                                            <img src="./assets/icons/pictures.svg" alt="" id="update-picture">
+
+                                        </div>
+                                       
+                                        <div class="sous-all-video-pictures imgvideo">
+                                            <span class="sous-all-video-pictures-span">Ajouter une video</span>
+                                            <input type="file" id="update-picture-video" style="display: none;">
+                                            <img src="./assets/icons/camera.svg" alt="" id="update-video">
+                                            
+                                        </div>
+                                       
+                                            <div class="sous-all-video-pictures imgvideo img-pictures">
+                                                <span class="sous-all-video-pictures-span"> un calendrier</span>
+                                            <img src="./assets/icons/calendar.svg" alt="">
+                                        </div>
+                                       
+                                            <div class="sous-all-video-pictures imgvideo  img-pictures">
+                                                <span class="sous-all-video-pictures-span">Ajouter encore</span>
+                                            <img src="./assets/icons/suspension.svg" alt="">
+                                        </div>
+                                       
+                                    </div>
                                 </div>
-                                <div></div>
+                                <div class="post-information">
+                                    <div class="alarm-post">
+                                        <img src="./assets/icons/alarms.svg" alt="">
+                                        <span class="publier">publier</span>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
