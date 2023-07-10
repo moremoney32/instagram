@@ -11,10 +11,11 @@ export function updateFilesImg(){
     let picture = document.querySelector("#update-picture")
     let allVideoImage = document.querySelectorAll(".imgvideo")
     let publier  = document.querySelector(".publier")
+    let input = document.querySelector("#post-input-input");
     let objectinfoPost = {
         image:"",
-        description:"",
-        idPost:""
+        idPost:"",
+        description:""
     }
 
     let image = null
@@ -29,8 +30,6 @@ export function updateFilesImg(){
             })
             publier.style.background ="#0001bc"
             publier.style.color = "white"
-
-
             let updateFileRead = new FileReader()
         updateFileRead.onload = (e) =>{
             if(image !== null){
@@ -44,10 +43,10 @@ export function updateFilesImg(){
             image.style.objectFit = 'cover';
             image.style.position = "absolute"
             image.style.top = "130px"
-            image.style.textAlign = "center"
             id++;
             document.querySelector(".post-input").appendChild(image);
             objectinfoPost.image = e.target.result;
+            objectinfoPost.description = input.value
             objectinfoPost.idPost = id;
             console.log(objectinfoPost)
             localStorage.setItem("postNew", JSON.stringify(objectinfoPost));

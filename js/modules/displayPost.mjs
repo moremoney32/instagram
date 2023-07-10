@@ -1,6 +1,7 @@
-/**function qui affice les posts */
+/**function qui affiche les posts */
 
 export function displayPost(arrayInfo){
+  
 
     let htmlPost;
 
@@ -8,12 +9,12 @@ export function displayPost(arrayInfo){
 
         htmlPost += `
 
-        <div class="sous-section2-1-2-child1">
+                            <div class="sous-section2-1-2-child1">
                                 <div class="sous-section2-1-2-child1-header-title">
                                     <img src="./assets/images/jugalux.jpg" alt="">
                                     <div class="sous-section2-1-2-child1-header-title-span">
                                         <span  class="sous-section2-1-2-child1-header-title-span1">Ray Hammond is at <span  class="sous-section2-1-2-child1-header-title-span2">New-York,United States</span></span>
-                                        <span  class="sous-section2-1-2-child1-header-title-span3">Thursday,jun 31, 5:50 PM</span>
+                                        <span  class="sous-section2-1-2-child1-header-title-span3">Thursday,jun 31, ${info.idPost}:50 PM</span>
                                     </div>
                                 </div>
                                 <img src="./assets/icons/suspension.svg" alt="">

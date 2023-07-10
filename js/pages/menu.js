@@ -1,7 +1,7 @@
 //import { postDisplay } from "../helpers/postDisplay"
 
 import { closePost } from "../helpers/closePost.mjs";
-import { changesMasque } from "../modules/changesMasque.mjs";
+import { changesMasque } from "../widgets/changesMasque.mjs";
 import { displayPost } from "../modules/displayPost.mjs";
 import { emogis } from "../modules/emogis.js"
 import { recuperationInfoPost } from "../modules/recuperationInfoPost.mjs";
@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded",()=>{
       ];
       let postDonnes = document.querySelector(".posts-donnees")
       let masque = document.querySelector(".masque")
+      let publier = document.querySelector(".publier")
 
       changesMasque()
       closePost()
@@ -31,19 +32,17 @@ document.addEventListener("DOMContentLoaded",()=>{
         
       return  emogis(emojiArray)
     })
-    document.querySelector(".publier").addEventListener("click",()=>{
-     
+    publier.addEventListener("click",()=>{
       recuperationInfoPost().then((result)=>{
        
         if(result.length === 0){
             return alert("vous n avez rien choisi a publier")
         }
         return postDonnes.style.display = "none",
-        masque.style.display ="none",
-        
+        masque.style.display = "none",
         displayPost(result),
-         localStorage.removeItem('postNew');
-        
+       console.log(result)
+        //localStorage.removeItem('postNew') 
       })
     })
   })
