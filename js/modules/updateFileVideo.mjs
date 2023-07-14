@@ -1,12 +1,18 @@
 /**function qui update les videos */
 
-import { closePost } from "../helpers/closePost.mjs"
 
 export function updateFileVideo(){
     let inputVideo = document.querySelector("#update-picture-video")
     let videoUpdate = document.querySelector("#update-video")
     let allVideoImage = document.querySelectorAll(".img-pictures")
     let publier  = document.querySelector(".publier")
+    let id = 0
+    let objectinfoPost = {
+        description:"" 
+    }
+    console.log(objectinfoPost)
+    localStorage.setItem("postNew", JSON.stringify(objectinfoPost));
+    let infoPost = JSON.parse(localStorage.getItem("postNew"));
     let video  = null
     videoUpdate.addEventListener("click",()=>{
         inputVideo.click()
@@ -24,11 +30,14 @@ export function updateFileVideo(){
                 video.remove(); 
               }
               video = document.createElement('video');
+              id++;
               video.src = videoUrl;
               video.controls = true;
-              closePost(video).then((result)=>{
-                return result
-            })
+              video.classList.add("video")
+              infoPost.video =  videoUrl;
+              infoPost.idPost = id;
+              console.log(infoPost)
+              localStorage.setItem("postNew", JSON.stringify(infoPost));
             return  document.querySelector(".post-input").appendChild(video),inputVideo.value = "";
              
         }

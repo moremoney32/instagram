@@ -7,6 +7,7 @@ import { emogis } from "../modules/emogis.js"
 import { recuperationInfoPost } from "../modules/recuperationInfoPost.mjs";
 import { updateFileVideo } from "../modules/updateFileVideo.mjs";
 import { updateFilesImg } from "../modules/updateFilesImg.mjs";
+import { changesButtonInput } from "../modules/changesButtonInput.mjs";
 
 document.addEventListener("DOMContentLoaded",()=>{
     
@@ -19,30 +20,46 @@ document.addEventListener("DOMContentLoaded",()=>{
         '🤧', '🥵', '🥶', '🥴', '😵', '🤯', '🤠', '🥳', '😎', '🤓',
         "🙆‍♀️","😵‍💫","🤡","👽","👹","🛰️","🪂","🚠","💺","🆑","Ⓜ️","🔻",
       ];
-      let postDonnes = document.querySelector(".posts-donnees")
-      let masque = document.querySelector(".masque")
-      let publier = document.querySelector(".publier")
-
+      document.querySelector(".sous-section2-1-input input").addEventListener("click",()=>{
+      
       changesMasque()
       closePost()
-      updateFilesImg()
+      changesButtonInput()
+      updateFilesImg().then((response)=>{
+        console.log(response)
+        return response
+      })
       updateFileVideo()
      
     document.querySelector(".emogis-click").addEventListener("click",()=>{
         
       return  emogis(emojiArray)
     })
-    publier.addEventListener("click",()=>{
+    
+    const checkFiles = ()=>{
+      let postDonnes = document.querySelector(".posts-donnees")
+      let masque = document.querySelector(".masque")
       recuperationInfoPost().then((result)=>{
-       
-        if(result.length === 0){
-            return alert("vous n avez rien choisi a publier")
+        if(result === "vous n avez rien choisi"){
+        return  alert("vous n avez rien choisi")
         }
-        return postDonnes.style.display = "none",
-        masque.style.display = "none",
-        displayPost(result),
+        else{
+           
+        postDonnes.remove()
+        masque.style.display = "none"
+        displayPost(result)
        console.log(result)
-        //localStorage.removeItem('postNew') 
+        localStorage.removeItem('postNew')
+
+        }
       })
-    })
+
+    }
+    let publier = document.querySelector(".publier")
+    //publier.removeEventListener("click",checkFiles)
+    publier.addEventListener("click",checkFiles)
+    
+      
+  }) 
+   
   })

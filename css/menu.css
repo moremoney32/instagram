@@ -304,13 +304,13 @@ header{
     gap: 30px;
   
 }
-.sous-section2-1-2{
+#sous-section2-1-2{
     display: flex;
     flex-direction: column;
     gap: 20px;
     width: 99%;
     border-radius: 5px;
-    background: #ffffff;
+    background:transparent;
     border: none;
     padding-top: 30px;
     
@@ -381,7 +381,15 @@ transform: translate3d(0,-10px,0);
 .sous-section2-1-2-child3 img{
     border-radius:5px;
     width:100%;
-    min-height: 300px;
+    max-height: 300px;
+    object-fit: cover;
+    cursor: pointer;
+    
+}
+.sous-section2-1-2-child3 video{
+    border-radius:5px;
+    width:100%;
+    max-height: 400px;
     object-fit: cover;
     cursor: pointer;
     
@@ -538,10 +546,11 @@ transform: translate3d(0,-10px,0);
     padding-bottom: 15px;
     margin-top: 50px;
     background:#fff;
-    display: none;
+    display:none;
     position: absolute;
     top: 0;
     width: 600px;
+    z-index: 999;
     
     
 }
@@ -723,7 +732,7 @@ transition: 1s ease-in-out;
     border-radius: 50%;
     transition: 1s ease-in-out;
 }
-.alarm-post span{
+.publier{
     padding: 10px;
     background:#fafafa;
     border-radius: 20px;
@@ -731,6 +740,14 @@ transition: 1s ease-in-out;
     padding-right: 15px;
     color: darkgrey;
     
+}
+.publier-change{
+    background: #0001bc;
+    color: white;
+    border-radius: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding: 10px;
 }
 .sous-section2-1-input :nth-child(1){
     width: 90%;
@@ -1010,6 +1027,23 @@ transition: 1s ease-in-out;
 .chiffre{
     color: darkgray;
     font-size: 12px;
+ }
+ .image{
+    width: 560px;
+    height: 200px;
+    border-radius:10px;
+    object-fit: cover;
+    position: absolute;
+    top: 130px;
+ }
+ .video{
+    width: 560px;
+    height: 200px;
+    border-radius:10px;
+    object-fit: cover;
+    position: absolute;
+    top: 130px;
+
  }
 
  

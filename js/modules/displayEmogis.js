@@ -2,7 +2,7 @@
 
 export function displayEmogis(arrayEmogis){
     
-    let emogisHtml;
+    let emogisHtml = "";
 
     arrayEmogis.forEach((emogis)=>{
     

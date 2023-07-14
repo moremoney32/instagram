@@ -3,7 +3,7 @@
 export function displayPost(arrayInfo){
   
 
-    let htmlPost;
+    let htmlPost = "";
 
     arrayInfo.forEach((info)=>{
 
@@ -20,15 +20,17 @@ export function displayPost(arrayInfo){
                                 <img src="./assets/icons/suspension.svg" alt="">
                             </div>
                             <div class="sous-section2-1-2-child2">
-                                <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque, sit in?</span> 
-                                <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque, sit in elit.</span>
+                               
                                 <div class="sous-section2-1-2-child2-emogis">
                                     <span>${info.description}</span>
-                                    <img src="./assets/images/emogiscorrect.PNG" alt="">
                                 </div>
                             </div>
                             <div class="sous-section2-1-2-child3">
                                 <img src="${info.image}" alt="">
+                                <video controls>
+                                <source src="${info.video}" type="video/mp4">
+                                </video>
+
                             </div>
                             <div class="sous-section2-1-2-child4">
                                <div class="sous-section2-1-2-child4-img">
@@ -64,6 +66,6 @@ export function displayPost(arrayInfo){
       
         ` 
     })
-    return  document.querySelector(".sous-section2-1-2").innerHTML =  htmlPost
+  document.querySelector("#sous-section2-1-2").insertAdjacentHTML("afterend",htmlPost)//beforebegin
 
 }

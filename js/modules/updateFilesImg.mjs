@@ -1,72 +1,65 @@
 /***function qui update les images***/
 
-import { closePost } from "../helpers/closePost.mjs"
-
 
 export function updateFilesImg(){
+   
+    return new Promise((resolve) => {
 
+        let picture = document.querySelector("#update-picture")
     let inputPost = document.querySelector("#update-picture-input")
     let id = 0
-   
-    let picture = document.querySelector("#update-picture")
     let allVideoImage = document.querySelectorAll(".imgvideo")
     let publier  = document.querySelector(".publier")
-    let input = document.querySelector("#post-input-input");
+   
     let objectinfoPost = {
-        image:"",
-        idPost:"",
-        description:""
+        description:"" 
     }
+    console.log(objectinfoPost)
+    localStorage.setItem("postNew", JSON.stringify(objectinfoPost));
+    let infoPost = JSON.parse(localStorage.getItem("postNew"));
 
     let image = null
-    picture.addEventListener("click",()=>{
+    const checkFiles = ()=>{
         inputPost.click()
-    })
-    inputPost.addEventListener("change",(e)=>{
-        let updateFile = e.target.files[0]
-        if(updateFile.type.startsWith("image/")){
-            allVideoImage.forEach((imageVideo)=>{
-                imageVideo.style.display = "none"
-            })
-            publier.style.background ="#0001bc"
-            publier.style.color = "white"
-            let updateFileRead = new FileReader()
-        updateFileRead.onload = (e) =>{
-            if(image !== null){
-                image.remove()
-            }
-            image = document.createElement('img');
-            image.src = e.target.result;
-            image.style.width = '560px';
-            image.style.height = '200px';
-            image.style.borderRadius = '10px';
-            image.style.objectFit = 'cover';
-            image.style.position = "absolute"
-            image.style.top = "130px"
-            id++;
-            document.querySelector(".post-input").appendChild(image);
-            objectinfoPost.image = e.target.result;
-            objectinfoPost.description = input.value
-            objectinfoPost.idPost = id;
-            console.log(objectinfoPost)
-            localStorage.setItem("postNew", JSON.stringify(objectinfoPost));
-            closePost(image).then((result)=>{
-                return result
-            })
-          }
-          
-      
-        return  updateFileRead.readAsDataURL(updateFile),inputPost.value = "";
+    }
+   // picture.removeEventListener("click",checkFiles)
+    picture.addEventListener("click",checkFiles)   
+  const changeFiles = (e)=>{
 
+    let updateFile = e.target.files[0]
+    if(updateFile.type.startsWith("image/")){
+        allVideoImage.forEach((imageVideo)=>{
+            imageVideo.style.display = "none"
+        })
+        publier.style.background ="#0001bc"
+        publier.style.color = "white"
+       
+        let updateFileRead = new FileReader()
+    updateFileRead.onload = (e) =>{
+        if(image !== null){
+            image.remove()
         }
+        image = document.createElement('img');
+        image.src = e.target.result;
+        image.classList.add("image")
+        id++;
+        document.querySelector(".post-input").appendChild(image);
+        infoPost.image = e.target.result;
+        infoPost.idPost = id;
+        console.log(infoPost)
+        localStorage.setItem("postNew", JSON.stringify(infoPost));
+        return resolve(image)
+      }
+     return updateFileRead.readAsDataURL(updateFile),
+      inputPost.value = "";
+    }
 
-        return  alert('Veuillez sélectionner uniquement une image.'),inputPost.value = "";
+    return  resolve(alert('Veuillez sélectionner uniquement une image.')),inputPost.value = "";      
+
+  }
+  inputPost.addEventListener("change", changeFiles);
         
-        
-         
     })
-    
-    
-    
 
+    
 }
