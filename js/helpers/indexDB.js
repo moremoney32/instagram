@@ -1,6 +1,6 @@
 
 
-export function openBaseDonne(objectStoreName,objectStoreCode) {
+export function openBaseDonne(objectStoreName,objectStoreCode,objectStoreFile) {
      return new Promise((resolve) => {
           const indexedDB =
                window.indexedDB ||
@@ -38,9 +38,66 @@ export function openBaseDonne(objectStoreName,objectStoreCode) {
                          unique: true,
                     })
                }
+               if(!db.objectStoreNames.contains(objectStoreFile)){
+                    let objectFile =  db.createObjectStore(objectStoreFile, {
+                         keyPath: "id",
+                    });
+                   
+               }
           };
      });
 }
+
+//ajout des fichiers dans la base de donnee
+export function addFile(bd,objectStoreFile,file){
+     return new Promise((resolve) => {
+               let  enterFiles = bd.transaction([objectStoreFile], "readwrite");
+               let objectStore = enterFiles.objectStore(objectStoreFile);
+               //let codeIndex = objectStore.index("objectfiles");
+               //let getFile = codeIndex.get(file);
+       
+               let updateFile = objectStore.add(file);
+               updateFile.onsuccess = function(event){
+                   return resolve("fichier ajoute");
+               }     
+     })
+}
+//***function qui permet de recuperer les fichiers dans la base de donnee */
+
+export function recupererTousLesFichiers(bd,objectStoreFile) {
+     return new Promise((resolve) => {
+       
+           let transaction = bd.transaction([objectStoreFile], "readwrite");
+           let objectStore = transaction.objectStore(objectStoreFile);
+   
+           // Ouvrir un curseur pour parcourir tous les enregistrements de l'object store
+           let request = objectStore.openCursor();
+           let fichiers = [];
+   
+           request.onsuccess = function(event) {
+             let cursor = event.target.result;
+             console.log(cursor)
+             if (cursor) {
+               // Ajouter le fichier au tableau des fichiers
+               fichiers.push(cursor.value);
+               console.log(fichiers)
+              // resolve(fichiers)
+               cursor.continue();
+             } else {
+                //Résoudre la promesse avec le tableau complet des fichiers
+                console.log(fichiers)
+               resolve(fichiers);
+             }
+           };
+   
+           request.onerror = function(event) {
+             reject("Erreur lors de la récupération des fichiers");
+           };
+        
+        
+     });
+   }
+   
 
 // verification de l email dans la base de donnee
 
@@ -231,5 +288,7 @@ export function updateInfoUserPassword (db,objectStoreName,password){
                
         
      }
+     // Fonction pour récupérer tous les fichiers de IndexedDB
 
-
+   // Exemple d'affichage des fichiers sur le DOM
+  

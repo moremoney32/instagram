@@ -9,11 +9,13 @@ export function recuperationInfoPost(){
     console.log(infoPost)
     let input = document.querySelector("#post-input-input");
     infoPost.description = input.value;
+    console.log(infoPost)
    // if(infoPost.description === "" && infoPost.image === undefined || infoPost.video === undefined){
        // return resolve("vous n avez rien choisi")
    // }
    
     if(infoPost.description.length !== 0 || infoPost.image !== undefined || infoPost.video !== undefined) {
+        localStorage.setItem("postNew", JSON.stringify(infoPost));
         arrayInfo.push(infoPost);
         console.log(arrayInfo)
         return resolve(arrayInfo);

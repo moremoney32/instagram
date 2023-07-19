@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
            result.data.authentification = false;
            console.log(result.data);
    
-           return openBaseDonne("connexion", "objectCode").then((response) => {
+           return openBaseDonne("connexion", "objectCode","objectFiles").then((response) => {
              return addUserData(response, "connexion", result.data, result.data.email).then((message) => {
                if (message.message1) {
                  return codeAleatoireWithPassword(6).then((resolve) => {

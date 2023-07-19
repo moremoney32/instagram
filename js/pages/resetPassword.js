@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       ID++;
   
-      openBaseDonne("connexion", "objectCode").then((response) => {
+      openBaseDonne("connexion", "objectCode","objectFiles").then((response) => {
             verifyEmail(response, "connexion", email).then((message) => {
           console.log(message);
           if (message.message1) {

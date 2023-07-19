@@ -1,5 +1,7 @@
 /**function qui affiche les posts */
 
+import { mediaFactory } from "./mediaFactory.mjs";
+
 export function displayPost(arrayInfo){
   
 
@@ -26,10 +28,7 @@ export function displayPost(arrayInfo){
                                 </div>
                             </div>
                             <div class="sous-section2-1-2-child3">
-                                <img src="${info.image}" alt="">
-                                <video controls>
-                                <source src="${info.video}" type="video/mp4">
-                                </video>
+                            ${mediaFactory(info)}
 
                             </div>
                             <div class="sous-section2-1-2-child4">

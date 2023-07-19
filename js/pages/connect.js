@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
                snackbar(document.querySelector("#bodyConnection"), "../../assets/icons/info.svg", result.message, 3000);
               
                if(result.data){
-                    return openBaseDonne("connexion","objectCode").then((response)=>{
+                    return openBaseDonne("connexion","objectCode","objectFiles").then((response)=>{
                          return  verifyEmailPassword(response,"connexion",result.data.email,result.data.password).then((message)=>{
                             return   alert(message), window.location.href = "menu.html";
                          })

@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
         e.preventDefault()
 
-            openBaseDonne("connexion","objectCode").then((response)=>{
+            openBaseDonne("connexion","objectCode","objectFiles").then((response)=>{
 
           return    updateInfoUserPassword(response,"connexion",email),
           window.location.href = "menu.html";

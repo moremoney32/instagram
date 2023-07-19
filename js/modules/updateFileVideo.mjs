@@ -1,12 +1,12 @@
 /**function qui update les videos */
 
+import { generateUniqueId } from "../helpers/generatorId.mjs"
 
 export function updateFileVideo(){
     let inputVideo = document.querySelector("#update-picture-video")
     let videoUpdate = document.querySelector("#update-video")
     let allVideoImage = document.querySelectorAll(".img-pictures")
     let publier  = document.querySelector(".publier")
-    let id = 0
     let objectinfoPost = {
         description:"" 
     }
@@ -30,12 +30,11 @@ export function updateFileVideo(){
                 video.remove(); 
               }
               video = document.createElement('video');
-              id++;
               video.src = videoUrl;
               video.controls = true;
               video.classList.add("video")
               infoPost.video =  videoUrl;
-              infoPost.idPost = id;
+              infoPost.id = generateUniqueId();
               console.log(infoPost)
               localStorage.setItem("postNew", JSON.stringify(infoPost));
             return  document.querySelector(".post-input").appendChild(video),inputVideo.value = "";
